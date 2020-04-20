@@ -46,5 +46,27 @@ export default {
             url: `/admin/serviceedu/subject/getAll`,
             method: 'get'
         })
+    },
+
+    /**
+     * 根据课程id，查评论
+     * @param {*} page 
+     * @param {*} limit 
+     * @param {*} searchObj 
+     */
+    getComments(page,limit,courseId){
+        return request({
+            url: `/web/servicecomment/edu-comment/getAllComments/${page}/${limit}/${courseId}`,
+            method: 'get'
+        })
+    },
+
+    saveComment(comment){
+        return request({
+            url: `/web/servicecomment/edu-comment/addComment`,
+            method: 'post',
+            data: comment
+        })
+        
     }
 }
