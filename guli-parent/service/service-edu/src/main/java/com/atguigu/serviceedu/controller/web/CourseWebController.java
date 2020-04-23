@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,44 +44,55 @@ public class CourseWebController {
 
     @ApiOperation("web课程列表前端渲染")
     @PostMapping("/getWebCourseList/{page}/{limit}")
-    public R getWebCourseList(@ApiParam(name = "page",value = "当前页",required = true)
+    public R getWebCourseList(@ApiParam(name = "page", value = "当前页", required = true)
                               @PathVariable Long page,
-                              @ApiParam(name = "limit",value = "每页记录数",required = true)
+                              @ApiParam(name = "limit", value = "每页记录数", required = true)
                               @PathVariable Long limit,
-                              @RequestBody(required = false)WebCourseQueryVo webCourseQueryVo){
-        Page<EduCourse> pageWebCourse = new Page<>(page,limit);
-        Map<String,Object> map = eduCourseService.getPageCourse(pageWebCourse,webCourseQueryVo);
+                              @RequestBody(required = false) WebCourseQueryVo webCourseQueryVo) {
+        Page<EduCourse> pageWebCourse = new Page<>(page, limit);
+        Map<String, Object> map = eduCourseService.getPageCourse(pageWebCourse, webCourseQueryVo);
         return R.ok().data(map);
     }
 
     //修改课程详情的方法，参数中添加request,用于取用户信息
     @ApiOperation("课程详情")
     @GetMapping("/getCourseDetail/{courseId}")
-    public R getCourseDetail(@ApiParam(name = "courseId",value = "课程id",required = true)
-                             @PathVariable String courseId,HttpServletRequest request
-                             ){
+    public R getCourseDetail(@ApiParam(name = "courseId", value = "课程id", required = true)
+                             @PathVariable String courseId, HttpServletRequest request
+    ) {
         //课程信息和讲师信息
         CourseDetailWebVo courseDetailWebVo = eduCourseService.getDetailCourseById(courseId);
 
         //章节和小节信息
         List<Chapter> chapterList = eduChapterService.getAllChapter(courseId);
 
-        //远程调用order服务，查看课程是否被购买
-        boolean courseIsBuy = orderClient.courseIsBuy(courseId,JwtUtils.getMemberIdByJwtToken(request));
+//        String user = JwtUtils.getMemberIdByJwtToken(request);
+//        System.out.println("request==========="+ request);
+//        System.out.println("user==========="+user);
+        //是否登录
+        if (!StringUtils.isEmpty(JwtUtils.getMemberIdByJwtToken(request))) {
+            //登录情况
+            //远程调用order服务，查看课程是否被购买
+            boolean courseIsBuy = orderClient.courseIsBuy(courseId, JwtUtils.getMemberIdByJwtToken(request));
 
-        return R.ok().data("course",courseDetailWebVo).data("chapterList",chapterList).data("courseIsBuy",courseIsBuy);
+            return R.ok().data("course", courseDetailWebVo).data("chapterList", chapterList).data("courseIsBuy", courseIsBuy);
+        } else {
+            //未登录情况
+            return R.ok().data("course",courseDetailWebVo).data("chapterList",chapterList);
+        }
+
     }
 
 
     @ApiOperation("根据id查订单课程信息")
     @GetMapping("/getCourseInfoOrder/{id}")
-    public CourseDetailWebVoOrder getCourseInfoOrder(@ApiParam(name = "id",value = "课程id",required = true)
+    public CourseDetailWebVoOrder getCourseInfoOrder(@ApiParam(name = "id", value = "课程id", required = true)
                                                      @PathVariable String id
-                                                     ){
+    ) {
         CourseDetailWebVoOrder courseDetailWebVoOrder = new CourseDetailWebVoOrder();
         CourseDetailWebVo eduCourse = eduCourseService.getDetailCourseById(id);
 
-        BeanUtils.copyProperties(eduCourse,courseDetailWebVoOrder);
+        BeanUtils.copyProperties(eduCourse, courseDetailWebVoOrder);
         return courseDetailWebVoOrder;
 
     }

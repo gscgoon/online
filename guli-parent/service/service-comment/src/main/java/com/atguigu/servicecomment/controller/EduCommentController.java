@@ -49,20 +49,20 @@ public class EduCommentController
     {
         //获取token中的用户信息
         String memberId = JwtUtils.getMemberIdByJwtToken(request);
+        System.out.println("memberId========="+memberId);
         if(StringUtils.isEmpty(memberId))
         {
-            return R.error().code(28004).message("请登录");
+            return R.error().code(28004).message("您好，请先登录在进行评论！");
+        }else {
+            boolean flag = eduCommentService.addComment(eduComment,memberId);
+            if(flag)
+            {
+                return R.ok();
+            }else
+            {
+                return R.error();
+            }
         }
-//        System.out.println("eduComment==========="+eduComment);
-        boolean flag = eduCommentService.addComment(eduComment,memberId);
-        if(flag)
-        {
-            return R.ok();
-        }else
-        {
-            return R.error();
-        }
-
     }
 }
 
