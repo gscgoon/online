@@ -61,6 +61,10 @@ export default {
         })
     },
 
+    /**
+     * 添加评论
+     * @param {*} comment 
+     */
     saveComment(comment){
         return request({
             url: `/web/servicecomment/edu-comment/addComment`,

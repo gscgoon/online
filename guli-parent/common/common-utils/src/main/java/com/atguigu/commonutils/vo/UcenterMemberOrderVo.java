@@ -1,4 +1,4 @@
-package com.atguigu.commonutils.orderVo;
+package com.atguigu.commonutils.vo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;

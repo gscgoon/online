@@ -215,7 +215,6 @@
                       placeholder="输入您要评论的文字"
                       id="commentContent"
                     ></textarea>
-                    <!-- <textarea name placeholder="输入您要评论的文字" id="commentContent"></textarea> -->
                   </fieldset>
                   <p class="of mt5 tar pl10 pr10">
                     <span class="fl">
@@ -308,15 +307,6 @@ export default {
   asyncData({ params, error }) {
     //课程id
     return { courseId: params.id };
-    // return course.getWebCourseDetail(params.id).then(response => {
-    //     // console.log(response.data.data.course)
-    //     return {
-    //     course: response.data.data.course,
-    //     chapterList: response.data.data.chapterList,
-    //     //定义课程id
-    //     courseId: params.id
-    //     }
-    // })
   },
   data() {
     return {
@@ -326,7 +316,8 @@ export default {
       total: 10,
       comment: {
         content: "",
-        courseId: ""
+        courseId: "",
+        teacherId: ""
       },
       course: {},
       chapterList: [],
@@ -344,8 +335,6 @@ export default {
       course.getWebCourseDetail(this.courseId).then(response => {
         this.course = response.data.data.course,
         this.chapterList = response.data.data.chapterList;
-        // console.log(this.course);
-        // console.log(response.data.data.courseIsBuy)
         this.courseIsBuy = response.data.data.courseIsBuy;
       });
     },
@@ -373,12 +362,14 @@ export default {
     //添加品论
     addComment(){
       this.comment.courseId = this.courseId
-      console.log(this.comment)
+      this.comment.teacherId = this.course.teacherId
+      // console.log(this.comment)
       course.saveComment(this.comment).then(response =>{
         return this.$message({
           type: 'success',
           message: '谢谢您对本课程的评论!'
         })
+        //评论成功后将输入框内的内容清空
       })
     }
   }
