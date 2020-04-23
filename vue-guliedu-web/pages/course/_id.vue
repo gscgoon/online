@@ -231,7 +231,7 @@
           <section class="question-list lh-bj-list pr">
             <ul class="pr10">
               <li v-for="(comment,index) in data.records" v-bind:key="index">
-              <!-- <li> -->
+                <!-- <li> -->
                 <aside class="noter-pic">
                   <img width="50" height="50" class="picImg" :src="comment.avatar" />
                 </aside>
@@ -256,9 +256,9 @@
         </section>
 
         <!-- 公共分页 开始 -->
-         <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
-        <div class="paging"> 
-        <a
+        <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
+        <div class="paging">
+          <a
             :class="{undisable: !data.hasPrevious}"
             href="#"
             title="首页"
@@ -293,7 +293,7 @@
           <div class="clear" />
         </div>
       </div>
-       <!-- 公共分页 结束 -->
+      <!-- 公共分页 结束 -->
     </div>
     <!-- 评论结束 -->
   </div>
@@ -310,7 +310,7 @@ export default {
   },
   data() {
     return {
-      data: {},//返回评论数据
+      data: {}, //返回评论数据
       page: 1,
       limit: 4,
       total: 10,
@@ -327,14 +327,15 @@ export default {
   //页面加载之前获取到数据
   created() {
     this.initWebCourseDetail();
-    this.initComment()
+    this.initComment();
   },
   methods: {
     initWebCourseDetail() {
       //初始化课程信息
       course.getWebCourseDetail(this.courseId).then(response => {
-        this.course = response.data.data.course,
-        this.chapterList = response.data.data.chapterList;
+        console.log(response.data.data);
+        (this.course = response.data.data.course),
+          (this.chapterList = response.data.data.chapterList);
         this.courseIsBuy = response.data.data.courseIsBuy;
       });
     },
@@ -346,31 +347,30 @@ export default {
       });
     },
     //评论
-    initComment(){
-        course.getComments(1,4,this.courseId).then(response =>{
-            // console.log(this.courseId)
-            // console.log(response.data.data)
-            this.data = response.data.data
-        })
+    initComment() {
+      course.getComments(1, 4, this.courseId).then(response => {
+        // console.log(this.courseId)
+        // console.log(response.data.data)
+        this.data = response.data.data;
+      });
     },
     //跳转到某一页
-    gotoPage(page){
-        course.getComments(page, this.limit,this.courseId).then(response => {
-            this.data = response.data.data
-        })
+    gotoPage(page) {
+      course.getComments(page, this.limit, this.courseId).then(response => {
+        this.data = response.data.data;
+      });
     },
     //添加品论
-    addComment(){
-      this.comment.courseId = this.courseId
-      this.comment.teacherId = this.course.teacherId
+    addComment() {
+      this.comment.courseId = this.courseId;
+      this.comment.teacherId = this.course.teacherId;
       // console.log(this.comment)
-      course.saveComment(this.comment).then(response =>{
+      course.saveComment(this.comment).then(response => {
         return this.$message({
-          type: 'success',
-          message: '谢谢您对本课程的评论!'
-        })
-        //评论成功后将输入框内的内容清空
-      })
+          type: "success",
+          message: "谢谢您对本课程的评论!"
+        });
+      });
     }
   }
 };
