@@ -1,7 +1,7 @@
 package com.atguigu.serviceorder.service.impl;
 
-import com.atguigu.commonutils.orderVo.CourseDetailWebVoOrder;
-import com.atguigu.commonutils.orderVo.UcenterMemberOrderVo;
+import com.atguigu.commonutils.vo.CourseDetailWebVoOrder;
+import com.atguigu.commonutils.vo.UcenterMemberOrderVo;
 import com.atguigu.serviceorder.service.TOrderService;
 import com.atguigu.serviceorder.client.EduCourseClient;
 import com.atguigu.serviceorder.client.UcenterMemberClient;

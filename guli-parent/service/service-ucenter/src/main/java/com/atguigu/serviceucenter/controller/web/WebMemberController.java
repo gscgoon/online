@@ -2,7 +2,7 @@ package com.atguigu.serviceucenter.controller.web;
 
 import com.atguigu.commonutils.JwtUtils;
 import com.atguigu.commonutils.R;
-import com.atguigu.commonutils.orderVo.UcenterMemberOrderVo;
+import com.atguigu.commonutils.vo.UcenterMemberOrderVo;
 import com.atguigu.servicebase.handler.GuliException;
 import com.atguigu.serviceucenter.entity.UcenterMember;
 import com.atguigu.serviceucenter.service.UcenterMemberService;

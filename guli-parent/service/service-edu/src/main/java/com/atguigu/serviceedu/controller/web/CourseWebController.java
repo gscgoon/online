@@ -2,7 +2,7 @@ package com.atguigu.serviceedu.controller.web;
 
 import com.atguigu.commonutils.JwtUtils;
 import com.atguigu.commonutils.R;
-import com.atguigu.commonutils.orderVo.CourseDetailWebVoOrder;
+import com.atguigu.commonutils.vo.CourseDetailWebVoOrder;
 import com.atguigu.serviceedu.client.OrderClient;
 import com.atguigu.serviceedu.entity.EduCourse;
 import com.atguigu.serviceedu.entity.chapter.Chapter;

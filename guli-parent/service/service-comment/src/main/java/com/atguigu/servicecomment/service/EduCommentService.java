@@ -26,6 +26,7 @@ public interface EduCommentService extends IService<EduComment> {
     /**
      * 添加评论
      * @param eduComment
+     * @param memberId
      */
-    boolean addComment(EduComment eduComment);
+    boolean addComment(EduComment eduComment, String memberId);
 }

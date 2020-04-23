@@ -2,12 +2,15 @@ package com.atguigu.serviceucenter.controller;
 
 
 import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.vo.UcenterMemberCommentVo;
+import com.atguigu.serviceucenter.entity.UcenterMember;
 import com.atguigu.serviceucenter.entity.vo.LoginVo;
 import com.atguigu.serviceucenter.entity.vo.RegisterVo;
 import com.atguigu.serviceucenter.service.UcenterMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,8 +78,17 @@ public class UcenterMemberController {
                          @PathVariable String day
                          ){
         Integer count = ucenterMemberService.countRegist(day);
-//        System.out.println("count===="+count);
         return R.ok().data("count",count);
+    }
+
+    @ApiOperation("用户信息")
+    @GetMapping("/getMemberById/{id}")
+    public UcenterMemberCommentVo getLoginInfo(@PathVariable String id)
+    {
+        UcenterMember ucenterMember = ucenterMemberService.getById(id);
+        UcenterMemberCommentVo ucenterMemberCommentVo =  new UcenterMemberCommentVo();
+        BeanUtils.copyProperties(ucenterMember,ucenterMemberCommentVo);
+        return ucenterMemberCommentVo;
     }
 }
 
