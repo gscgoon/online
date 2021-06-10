@@ -49,6 +49,9 @@ import org.springframework.web.util.pattern.PathPatternParser;
 public class CorsConfig {
     @Bean
     public CorsWebFilter corsFilter() {
+        /**
+         * 添加一条注释
+         */
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedMethod("*");
         config.addAllowedOrigin("*");
