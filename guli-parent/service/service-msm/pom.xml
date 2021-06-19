@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service_msm</artifactId>
+    <artifactId>service-msm</artifactId>
 
 
     <dependencies>
