@@ -22,16 +22,19 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("acl_role_permission")
-@ApiModel(value="RolePermission对象", description="角色权限")
+@ApiModel(value="RolePermission对象", description="角色权限表")
 public class RolePermission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(value = "id")
     @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
+    @ApiModelProperty(value = "角色id")
     private String roleId;
 
+    @ApiModelProperty(value = "权限id")
     private String permissionId;
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")

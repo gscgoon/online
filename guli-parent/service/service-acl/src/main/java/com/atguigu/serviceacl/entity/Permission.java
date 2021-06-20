@@ -24,7 +24,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("acl_permission")
-@ApiModel(value="Permission对象", description="权限")
+@ApiModel(value="Permission对象", description="权限表")
 public class Permission implements Serializable {
 
     private static final long serialVersionUID = 1L;

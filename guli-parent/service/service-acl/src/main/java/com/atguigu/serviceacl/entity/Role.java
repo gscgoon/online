@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("acl_role")
-@ApiModel(value="Role对象", description="")
+@ApiModel(value="Role对象", description="角色表")
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
