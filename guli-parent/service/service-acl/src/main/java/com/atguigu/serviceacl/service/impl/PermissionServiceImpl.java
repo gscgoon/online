@@ -44,7 +44,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         wrapper.orderByDesc("id");
         List<Permission> permissionList = baseMapper.selectList(wrapper);
 
-        List<Permission> result = bulid(permissionList);
+        List<Permission> result = build(permissionList);
 
         return result;
     }
@@ -76,17 +76,14 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         }
 
 
-        List<Permission> permissionList = bulid(allPermissionList);
+        List<Permission> permissionList = build(allPermissionList);
         return permissionList;
     }
 
     //给角色分配权限
     @Override
-    public void saveRolePermissionRealtionShip(String roleId, String[] permissionIds) {
-
+    public void saveRolePermissionRelationShip(String roleId, String[] permissionIds) {
         rolePermissionService.remove(new QueryWrapper<RolePermission>().eq("role_id", roleId));
-
-  
 
         List<RolePermission> rolePermissionList = new ArrayList<>();
         for(String permissionId : permissionIds) {
@@ -127,15 +124,14 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
     @Override
     public List<JSONObject> selectPermissionByUserId(String userId) {
         List<Permission> selectPermissionList = null;
-        if(this.isSysAdmin(userId)) {
+        if(isSysAdmin(userId)) {
             //如果是超级管理员，获取所有菜单
             selectPermissionList = baseMapper.selectList(null);
         } else {
             selectPermissionList = baseMapper.selectPermissionByUserId(userId);
         }
-
         List<Permission> permissionList = PermissionHelper.bulid(selectPermissionList);
-        List<JSONObject> result = MemuHelper.bulid(permissionList);
+        List<JSONObject> result = MemuHelper.build(permissionList);
         return result;
     }
 
@@ -146,7 +142,6 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
      */
     private boolean isSysAdmin(String userId) {
         User user = userService.getById(userId);
-
         if(null != user && "admin".equals(user.getUsername())) {
             return true;
         }
@@ -171,7 +166,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
      * @param treeNodes
      * @return
      */
-    private static List<Permission> bulid(List<Permission> treeNodes) {
+    private static List<Permission> build(List<Permission> treeNodes) {
         List<Permission> trees = new ArrayList<>();
         for (Permission treeNode : treeNodes) {
             if ("0".equals(treeNode.getPid())) {
@@ -214,13 +209,13 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         List<Permission> permissionList = baseMapper.selectList(wrapper);
         System.out.println("************菜单集合:"+permissionList);
         //2 把查询所有菜单list集合按照要求进行封装
-        List<Permission> resultList = bulidPermission(permissionList);
+        List<Permission> resultList = buildPermission(permissionList);
         System.out.println("%%%%%%%%%%%%目标菜单集合:"+resultList);
         return resultList;
     }
 
     //把返回所有菜单list集合进行封装的方法
-    public static List<Permission> bulidPermission(List<Permission> permissionList) {
+    public static List<Permission> buildPermission(List<Permission> permissionList) {
 
         //创建list集合，用于数据最终封装
         List<Permission> finalNode = new ArrayList<>();
@@ -289,7 +284,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
     //=========================给角色分配菜单=======================
     @Override
-    public void saveRolePermissionRealtionShipGuli(String roleId, String[] permissionIds) {
+    public void saveRolePermissionRelationShipGuli(String roleId, String[] permissionIds) {
         //roleId角色id
         //permissionId菜单id 数组形式
         //1 创建list集合，用于封装角色权限表的数据
