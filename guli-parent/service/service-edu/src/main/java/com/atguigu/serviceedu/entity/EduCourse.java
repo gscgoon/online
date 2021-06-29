@@ -25,7 +25,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="EduCourse对象", description="课程")
+@TableName("edu_course")
+@ApiModel(value="EduCourse对象", description="课程表")
 public class EduCourse implements Serializable {
 
     private static final long serialVersionUID = 1L;

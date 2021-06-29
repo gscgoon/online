@@ -1,11 +1,9 @@
 package com.atguigu.serviceedu.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,7 +22,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="EduSubject对象", description="课程科目")
+@TableName("edu_subject")
+@ApiModel(value="EduSubject对象", description="课程类别表")
 public class EduSubject implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,13 +32,13 @@ public class EduSubject implements Serializable {
     @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
-    @ApiModelProperty(value = "类别名称")
+    @ApiModelProperty(value = "课程类别名称")
     private String title;
 
-    @ApiModelProperty(value = "父ID")
+    @ApiModelProperty(value = "课程父ID")
     private String parentId;
 
-    @ApiModelProperty(value = "排序字段")
+    @ApiModelProperty(value = "排序")
     private Integer sort;
 
     @ApiModelProperty(value = "创建时间")

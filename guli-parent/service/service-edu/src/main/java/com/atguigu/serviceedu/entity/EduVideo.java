@@ -1,11 +1,9 @@
 package com.atguigu.serviceedu.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,7 +22,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="EduVideo对象", description="课程视频")
+@TableName("edu_video")
+@ApiModel(value="EduVideo对象", description="课程视频表")
 public class EduVideo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,7 +47,7 @@ public class EduVideo implements Serializable {
     @ApiModelProperty(value = "原始文件名称")
     private String videoOriginalName;
 
-    @ApiModelProperty(value = "排序字段")
+    @ApiModelProperty(value = "排序")
     private Integer sort;
 
     @ApiModelProperty(value = "播放次数")
