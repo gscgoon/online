@@ -6,7 +6,6 @@
             </el-form-item>
             <el-form-item label="讲师排序">
                 <!--实现上下加减-->
-                <!-- <el-input-number v-model="teacher.sort" controls-position="right" min="0"/>-->
                 <el-input-number v-model="teacher.sort" controls-position="right" min="0"/>
             </el-form-item>
             <!-- 讲师头衔需要下拉选择 -->
@@ -16,43 +15,36 @@
                     <el-option :value="2" label="首席讲师"/>
                 </el-select>
             </el-form-item>
-
             <!-- 讲师头像 -->
             <el-form-item label="讲师头像">
               <!-- 头像缩略图 -->
               <pan-thumb :image="teacher.avatar"/>
               <!--文件上传 -->
               <el-button type="primary" icon="el-icon-upload" @click="imagecropperShow=true">更换头像</el-button>
-              
               <!-- 上传组件 -->
               <image-cropper 
-                            v-show="imagecropperShow"
-                            :width="300"
-                            :height="300"
-                            :key="imagecropperKey"
-                            :url="BASE_API+'/admin/serviceoss/oss/upload'"
-                            field="file"
-                            @close="close"
-                            @crop-upload-success="cropSuccess"/>
+                  v-show="imagecropperShow"
+                  :width="300"
+                  :height="300"
+                  :key="imagecropperKey"
+                  :url="BASE_API+'/admin/serviceoss/oss/upload'"
+                  field="file"
+                  @close="close"
+                  @crop-upload-success="cropSuccess"/>
             </el-form-item>
-
-
             <el-form-item label="讲师资历">
                 <el-input v-model="teacher.career"/>
             </el-form-item>
-
              <el-form-item label="讲师简介">
                  <!-- 文本格式 -->
                 <el-input v-model="teacher.intro" :rows="10" type="textarea"/>
             </el-form-item>
-
              <el-form-item>
                  <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
              </el-form-item>
         </el-form>
     </div>
 </template>
-
 <script>
 import teacher from '@/api/edu/teacher'
 //引入组件
@@ -88,6 +80,7 @@ export default {
   //       如果是新增路由，则重新初始化表单数据
   watch: {
     $route(to,from){
+      console.log("路由切换")
       this.init()
     }
   },
@@ -126,7 +119,7 @@ export default {
           message: '新增成功!'
         })
       }).then(resposne => {
-        this.$router.push({ path: '/edu/teacher'})
+        this.$router.push({ path: '/edu/teacher/list'})
       }).catch((response) => {
         this.$message({
           type: 'error',
@@ -142,7 +135,7 @@ export default {
           message: '修改成功!'
         })
       }).then(resposne => {
-        this.$router.push({ path: '/edu/teacher'})
+        this.$router.push({ path: '/edu/teacher/list'})
       }).catch((response) => {
         this.$message({
           type: 'error',

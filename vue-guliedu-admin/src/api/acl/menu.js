@@ -9,7 +9,7 @@ export default {
    */
   getNestedTreeList() {
     return request({
-      url: `${api_name}/getAllMenum`,
+      url: `${api_name}/getAllMenu`,
       method: 'get'
     })
   },
@@ -20,7 +20,7 @@ export default {
    */
   removeById(id) {
     return request({
-      url: `${api_name}/removeMnum/${id}`,
+      url: `${api_name}/removeMenu/${id}`,
       method: "delete"
     })
   },

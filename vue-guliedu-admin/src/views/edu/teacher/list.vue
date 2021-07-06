@@ -1,5 +1,6 @@
 <template>
-  <div class="table-container">
+  
+  <div class="app-container">
     <el-form :inline="true" class="demo-form-line">
       <el-form-item>
         <el-input v-model="searchObj.name" placeholder="讲师名称"/>
@@ -27,9 +28,8 @@
           default-time="00:00:00"
         />
       </el-form-item>
-      <el-button type="primary" icon="el-icon-search" @click="fetchData()">查询</el-button>
-      <el-button type="default" @click="resetData()">清空</el-button>
-
+      <el-button type="primary" icon="el-icon-search" @click="fetchData()" round>查询</el-button>
+      <el-button type="default" @click="resetData()" round>清空</el-button>
     </el-form>
     <el-table
       v-loading="listLoading"
@@ -80,11 +80,10 @@
         width="280"
         align="center">
         <template slot-scope="scope">
-
           <router-link :to="'/edu/teacher/edit/'+scope.row.id">
-            <el-button type="primary" size="mini" icon="el-icon-edit" >修改</el-button>
+            <el-button type="primary" size="mini" icon="el-icon-edit" round>修改</el-button>
           </router-link>
-          <el-button type="danger" size="mini" icon="el-icon-delete" @click="deleteById(scope.row.id)">删除</el-button>
+          <el-button type="danger" size="mini" icon="el-icon-delete" @click="deleteById(scope.row.id,scope.row.name)"  round>删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -94,7 +93,7 @@
       :current-page="page"
       :page-size="limit"
       :total="total"
-      style="padding: 32px 0;"
+      style="padding: 32px 0; text-align: center"
       layout="total, prev, pager, next, jumper"
       @current-change="fetchData"/>
   </div>
@@ -144,23 +143,22 @@ export default {
       /**
        * 删除讲师
        */
-      deleteById(id){
-        this.$confirm('您确定删除这条记录吗？','提示',{
+      deleteById(id,name){
+        this.$confirm('您确定删除讲师【'+name+'】吗？','提示',{
           confirmButtonText: '确定',
           cancleButtonText: '取消',
-          type: 'warning',
-          center: true
+          type: 'warning'
         }).then(() =>{
           //向后台发送ajax请求
           teacher.deleteTeacherById(id)
         }).then(response => {
-          // 重新加载数据
-          this.fetchData()
           //给出结果提示
           this.$message({
             type: 'success',
             message: "删除成功！"
           })
+          // 重新加载数据
+          this.fetchData()
         }).catch((response) =>{
           if (response === 'cancel') {
               this.$message({

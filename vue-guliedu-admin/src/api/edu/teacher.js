@@ -3,12 +3,12 @@ import request from '@/utils/request'
 export default {
   /**
    * 多条件分页查询讲师
-   * @param {*} page 
-   * @param {*} limit 
-   * @param {*} searchObj 
+   * @param {*} page
+   * @param {*} limit
+   * @param {*} searchObj
    */
     getPageList(page, limit, searchObj) {
-      return request({
+    return request({
         // 带参数的话应该使用飘`` 这种符号 而不是单引号''
         // url: '/ucenter/member/getAllMember/multiple/${page}/${limit}',
         url: `/admin/serviceedu/teacher/getList/${page}/${limit}`,
@@ -19,9 +19,9 @@ export default {
 
     /**
      * 保存讲师需要一个对象，往后台传，就需要封装到data中
-     * @param {*} teacher 
+     * @param {*} teacher
      */
-    save(teacher){
+  save(teacher){
       return request({
         url: `/admin/serviceedu/teacher/add`,
         method: 'post',
@@ -64,12 +64,12 @@ export default {
       })
     },
 
-    /**
+  /**
      * 课程列表中讲师下拉框的讲师数据
      */
-    getAllTeacher(){
-      return request({
-        url: `/admin/serviceedu/teacher/getAll`,
+  getAllTeacher(){
+    return request({
+url: `/admin/serviceedu/teacher/getAll`,
         method: 'get'
       })
     }

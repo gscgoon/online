@@ -23,6 +23,12 @@
           <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
+      <el-form-item prop="identifyCode">
+        <span class="svg-container">
+          <svg-icon icon-class="user" />
+        </span>
+        <el-input v-model="loginForm.identifyCode" name="identifyCode" type="text" auto-complete="on" placeholder="identifyCode" />
+      </el-form-item>
       <el-form-item>
         <el-button :loading="loading" type="primary" style="width:100%;" @click="handleLogin">
           登录
@@ -89,7 +95,6 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-         // debugger
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
