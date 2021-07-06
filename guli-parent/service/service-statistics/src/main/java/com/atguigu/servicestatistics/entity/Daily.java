@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("statistics_daily")
-@ApiModel(value="Daily对象", description="网站统计日数据")
+@ApiModel(value="Daily对象", description="网站统计日数据表")
 public class Daily implements Serializable {
 
     private static final long serialVersionUID = 1L;

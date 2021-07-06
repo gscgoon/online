@@ -77,7 +77,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     public List<Role> selectRoleByUserId(String id) {
-        //根据用户id拥有的角色id
+        //根据用户id获取用户拥有的角色集合
         List<UserRole> userRoleList = userRoleService.list(new QueryWrapper<UserRole>().eq("user_id", id).select("role_id"));
         List<String> roleIdList = userRoleList.stream().map(item -> item.getRoleId()).collect(Collectors.toList());
         List<Role> roleList = new ArrayList<>();

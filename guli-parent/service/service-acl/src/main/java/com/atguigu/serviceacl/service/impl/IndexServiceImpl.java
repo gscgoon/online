@@ -34,7 +34,6 @@ public class IndexServiceImpl implements IndexService {
 
     /**
      * 根据用户名获取用户登录信息
-     *
      * @param username
      * @return
      */
@@ -45,7 +44,6 @@ public class IndexServiceImpl implements IndexService {
         if (null == user) {
 //            throw new GuliException(ResultCodeEnum.FETCH_USERINFO_ERROR);
         }
-
         //根据用户id获取角色
         List<Role> roleList = roleService.selectRoleByUserId(user.getId());
         List<String> roleNameList = roleList.stream().map(item -> item.getRoleName()).collect(Collectors.toList());

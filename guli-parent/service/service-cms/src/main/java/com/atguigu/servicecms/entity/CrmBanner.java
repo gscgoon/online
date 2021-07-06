@@ -23,6 +23,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@TableName("crm_banner")
 @ApiModel(value="CrmBanner对象", description="首页banner表")
 public class CrmBanner implements Serializable {
 

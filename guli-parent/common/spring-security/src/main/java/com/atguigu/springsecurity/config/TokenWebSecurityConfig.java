@@ -85,6 +85,5 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
                );
         //如果放开这行，而注释掉上边的，后台管理系统登录时会找不到路径的错误
 //        web.ignoring().antMatchers("/*/**");
-
     }
 }

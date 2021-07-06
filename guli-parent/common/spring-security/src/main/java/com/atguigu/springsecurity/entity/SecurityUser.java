@@ -25,13 +25,10 @@ public class SecurityUser implements UserDetails {
 
     //当前登录用户
     private transient User currentUserInfo;
-
     //当前权限
     private List<String> permissionValueList;
-
     public SecurityUser() {
     }
-
     public SecurityUser(User user) {
         if (user != null) {
             this.currentUserInfo = user;
@@ -46,7 +43,6 @@ public class SecurityUser implements UserDetails {
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(permissionValue);
             authorities.add(authority);
         }
-
         return authorities;
     }
 

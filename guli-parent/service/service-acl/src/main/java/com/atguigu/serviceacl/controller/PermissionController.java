@@ -14,7 +14,6 @@ import java.util.List;
  * <p>
  * 权限 菜单管理
  * </p>
- *
  * @author testjava
  * @since 2020-01-12
  */
@@ -29,17 +28,15 @@ public class PermissionController {
 
     //获取全部菜单
     @ApiOperation(value = "查询所有菜单")
-    @GetMapping("/getAllMenum")
-    public R getAllMenum() {
-        //测试
-//        List<Permission> allMenumList =  permissionService.queryAllMenuGuli();
-        List<Permission> allMenumList =  permissionService.queryAllMenu();
-        return R.ok().data("allMenumList",allMenumList);
+    @GetMapping("/getAllMenu")
+    public R getAllMenu() {
+        List<Permission> children =  permissionService.queryAllMenu();
+        return R.ok().data("children",children);
     }
 
     @ApiOperation(value = "递归删除菜单")
-    @DeleteMapping("/removeMnum/{id}")
-    public R removeMnum(@PathVariable String id) {
+    @DeleteMapping("/removeMenu/{id}")
+    public R removeMenu(@PathVariable String id) {
         permissionService.removeChildByIdGuli(id);
         return R.ok();
     }
@@ -47,7 +44,7 @@ public class PermissionController {
     @ApiOperation(value = "给角色分配权限")
     @PostMapping("/doAssign")
     public R doAssign(String roleId,String[] permissionId) {
-        permissionService.saveRolePermissionRelationShipGuli(roleId,permissionId);
+        permissionService.doAssign(roleId,permissionId);
         return R.ok();
     }
 

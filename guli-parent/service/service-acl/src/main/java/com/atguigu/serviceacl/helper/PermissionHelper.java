@@ -20,7 +20,7 @@ public class PermissionHelper {
      * @param treeNodes
      * @return
      */
-    public static List<Permission> bulid(List<Permission> treeNodes) {
+    public static List<Permission> build(List<Permission> treeNodes) {
         //用来存放构建好的集合
         List<Permission> trees = new ArrayList<>();
         for (Permission treeNode : treeNodes) {
@@ -41,7 +41,7 @@ public class PermissionHelper {
      * @return
      */
     public static Permission findChildren(Permission treeNode,List<Permission> treeNodes) {
-        //设置该节点的所有字节点
+        //设置该节点的所有子节点，初始化
         treeNode.setChildren(new ArrayList<Permission>());
         //循环遍历所有节点的集合
         for (Permission it : treeNodes) {

@@ -10,7 +10,6 @@ import java.util.List;
  * <p>
  * 权限 服务类
  * </p>
- *
  * @author testjava
  * @since 2020-01-12
  */
@@ -40,5 +39,5 @@ public interface PermissionService extends IService<Permission> {
     void removeChildByIdGuli(String id);
 
     //给角色分配权限
-    void saveRolePermissionRelationShipGuli(String roleId, String[] permissionId);
+    void doAssign(String roleId, String[] permissionId);
 }

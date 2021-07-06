@@ -35,7 +35,7 @@ public class IndexController {
      */
     @GetMapping("/menu")
     public R getMenu(){
-        //获取当前登录用户用户名
+        //获取当前登录用户名
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         List<JSONObject> permissionList = indexService.getMenu(username);
         return R.ok().data("permissionList", permissionList);
@@ -45,11 +45,4 @@ public class IndexController {
     public R logout(){
         return R.ok();
     }
-
-
-//    @PostMapping("/login")
-//    public R login(){
-//        return R.ok();
-//    }
-
 }
