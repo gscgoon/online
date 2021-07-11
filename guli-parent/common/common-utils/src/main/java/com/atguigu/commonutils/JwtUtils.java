@@ -70,7 +70,7 @@ public class JwtUtils {
     /**
      * 根据token获取会员id
      * @param request
-     * @return
+     * @return string
      */
     public static String getMemberIdByJwtToken(HttpServletRequest request) {
         String jwtToken = request.getHeader("token");
