@@ -7,7 +7,7 @@ export default {
      */
     getBannerList(){
         return request({
-            url: `/admin/servicecms/crm-banner/getAllBanner`,
+            url: `/admin/serviceCms/crmBanner/getAllBanner`,
             method: 'get'
         })
     }
