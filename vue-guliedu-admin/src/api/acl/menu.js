@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const api_name = '/admin/acl/permission'
+const api_name = '/admin/Acl/permission'
 
 export default {
   

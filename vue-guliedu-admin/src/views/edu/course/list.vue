@@ -15,7 +15,6 @@
               :label="subject.title"
               :value="subject.id"/>
           </el-select>
-
           <!-- 二级分类 -->
           <el-select v-model="searchObj.subjectId" placeholder="请选择">
             <el-option
@@ -25,7 +24,6 @@
               :value="subject.id"/>
           </el-select>
         </el-form-item>
-
         <!-- 标题 -->
         <el-form-item>
           <el-input v-model="searchObj.title" placeholder="课程标题"/>
@@ -42,11 +40,9 @@
               :value="teacher.id"/>
           </el-select>
         </el-form-item>
-
-        <el-button type="primary" icon="el-icon-search" @click="fetchData()">查询</el-button>
-        <el-button type="default" @click="resetData()">清空</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="fetchData()" round>查询</el-button>
+        <el-button type="default" @click="resetData()" round>清空</el-button>
       </el-form>
-
       <!-- 表格 -->
       <el-table
         v-loading="listLoading"
@@ -56,7 +52,6 @@
         fit
         highlight-current-row
         row-class-name="myClassList">
-
         <el-table-column
           label="序号"
           width="70"
@@ -65,7 +60,6 @@
             {{ (page - 1) * limit + scope.$index + 1 }}
           </template>
         </el-table-column>
-
         <el-table-column label="课程信息" width="470" align="center">
           <template slot-scope="scope">
             <div class="info">
@@ -73,14 +67,13 @@
                 <img :src="scope.row.cover" alt="scope.row.title" width="150px">
               </div>
               <div class="title">
+                <!-- TODO -->
                 <a href="">{{ scope.row.title }}</a>
                 <p>{{ scope.row.lessonNum }}课时</p>
               </div>
             </div>
-
           </template>
         </el-table-column>
-
         <el-table-column label="创建时间" align="center">
           <template slot-scope="scope">
             {{ scope.row.gmtCreate.substr(0, 10) }}
@@ -102,7 +95,6 @@
             {{ scope.row.buyCount }}人
           </template>
         </el-table-column>
-
         <el-table-column label="操作" width="150" align="center">
           <template slot-scope="scope">
             <router-link :to="'/edu/course/info/'+scope.row.id">
@@ -111,11 +103,10 @@
             <router-link :to="'/edu/course/chapter/'+scope.row.id">
               <el-button type="text" size="mini" icon="el-icon-edit">编辑课程大纲</el-button>
             </router-link>
-            <el-button type="text" size="mini" icon="el-icon-delete" @click="del(scope.row.id)">删除</el-button>
+            <el-button type="text" size="mini" icon="el-icon-delete" @click="del(scope.row.id,scope.row.title)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
-
       <!-- 分页 -->
       <el-pagination
         :current-page="page"
@@ -150,7 +141,6 @@ export default {
       subjectTwoList: [] // 二级分类列表,
     }
   },
-
   created() { // 当页面加载时获取数据
     this.fetchData()
     // 初始化分类列表
@@ -158,16 +148,13 @@ export default {
     // 获取讲师列表
     this.initTeacherList()
   },
-
   methods: {
-
     //删除课程
-    del(id){
-      this.$confirm('您确定删除这门课程吗？','提示',{
+    del(id,title){
+      this.$confirm('您确定删除课程【'+title+'】吗？','提示',{
         confirmButtonText: '确定',
         cancleButtonText: '取消',
-        type: 'warning',
-        center: true
+        type: 'warning'
       }).then(() =>{
         console.log(id)
         //向后台发送ajax请求

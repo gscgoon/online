@@ -1,15 +1,11 @@
 <template>
-
   <div class="app-container">
-
     <h2 style="text-align: center;">发布新课程</h2>
-
     <el-steps :active="3" process-status="wait" align-center style="margin-bottom: 40px;">
       <el-step title="填写课程基本信息"/>
       <el-step title="创建课程大纲"/>
       <el-step title="发布课程"/>
     </el-steps>
-
     <div class="ccInfo">
       <img :src="coursePublish.cover">
       <div class="main">
@@ -20,7 +16,6 @@
         <h3 class="red">￥{{ coursePublish.price }}</h3>
       </div>
     </div>
-
     <div>
       <el-button @click="previous">返回修改</el-button>
       <el-button :disabled="saveBtnDisabled" type="primary" @click="publish">发布课程</el-button>

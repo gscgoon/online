@@ -4,7 +4,7 @@ export default {
 
     removeAliVideo(videoId){
         return request({
-            url: `/admin/servicevod/video/deleteAliyunVideo/${videoId}`,
+            url: `/admin/serviceEdu/video/deleteAliyunVideo/${videoId}`,
             method: 'delete'
         })
     }

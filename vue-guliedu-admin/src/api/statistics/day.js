@@ -7,14 +7,14 @@ export default {
      */
     createStatistics(day){
         return request ({
-            url: `/admin/servicestatistics/daily/statisticsData/${day}`,
+            url: `/admin/serviceStatistics/daily/statisticsData/${day}`,
             method:'get'
         })
     },
     //图表展示数据
     showChart(searchObj){
         return request({
-            url: `/admin/servicestatistics/daily/showChart/${searchObj.type}/${searchObj.begin}/${searchObj.end}`,
+            url: `/admin/serviceStatistics/daily/showChart/${searchObj.type}/${searchObj.begin}/${searchObj.end}`,
             method: 'get'
         })
     }

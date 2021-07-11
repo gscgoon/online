@@ -37,8 +37,8 @@ export default {
       user: defaultForm,
       saveBtnDisabled: false, // 保存按钮是否禁用,
       validateRules: {
-        username: [{ required: true, trigger: 'blur', message: '用户名必须输入' }],
-        password: [{ required: true, trigger: 'blur', validator: validatePass }]
+        username: [{ required: true, trigger: 'change', message: '用户名必须输入' }],
+        password: [{ required: true, trigger: 'change', validator: validatePass }]
       }
     }
   },

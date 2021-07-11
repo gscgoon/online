@@ -25,7 +25,7 @@ export default {
       role: defaultForm,
       saveBtnDisabled: false, // 保存按钮是否禁用,
       validateRules: {
-        roleName: [{ required: true, trigger: 'blur', message: '角色名必须输入' }]
+        roleName: [{ required: true, trigger: 'change', message: '角色名必须输入' }]
       }
     }
   },

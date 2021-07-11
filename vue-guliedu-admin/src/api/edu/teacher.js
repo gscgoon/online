@@ -11,7 +11,7 @@ export default {
     return request({
         // 带参数的话应该使用飘`` 这种符号 而不是单引号''
         // url: '/ucenter/member/getAllMember/multiple/${page}/${limit}',
-        url: `/admin/serviceedu/teacher/getList/${page}/${limit}`,
+        url: `/admin/serviceEdu/teacher/getList/${page}/${limit}`,
         method: 'post',
         data: searchObj
       })
@@ -23,7 +23,7 @@ export default {
      */
   save(teacher){
       return request({
-        url: `/admin/serviceedu/teacher/add`,
+        url: `/admin/serviceEdu/teacher/add`,
         method: 'post',
         data: teacher
       })
@@ -36,7 +36,7 @@ export default {
     deleteTeacherById(id){
       return request({
         // url: '/admin/serviceedu/teacher/delete/'+id,
-        url: `/admin/serviceedu/teacher/delete/${id}`,
+        url: `/admin/serviceEdu/teacher/delete/${id}`,
         method: 'delete'
       })
     },
@@ -47,7 +47,7 @@ export default {
      */
     updateById(teacher){
       return request({
-        url: `/admin/serviceedu/teacher/update`,
+        url: `/admin/serviceEdu/teacher/update`,
         method: 'post',
         data: teacher
       })
@@ -59,7 +59,7 @@ export default {
      */
     getById(id){
       return request({
-        url: `/admin/serviceedu/teacher/query/${id}`,
+        url: `/admin/serviceEdu/teacher/query/${id}`,
         method: 'get'
       })
     },
@@ -69,7 +69,7 @@ export default {
      */
   getAllTeacher(){
     return request({
-url: `/admin/serviceedu/teacher/getAll`,
+url: `/admin/serviceEdu/teacher/getAll`,
         method: 'get'
       })
     }

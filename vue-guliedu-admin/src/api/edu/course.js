@@ -10,7 +10,7 @@ export default {
      */
     getPageListCourse(page, limit, searchObj) {
       return request({
-        url: `/admin/serviceedu/course/query/${page}/${limit}`,
+        url: `/admin/serviceEdu/course/query/${page}/${limit}`,
         method: 'post',
         data: searchObj
       })
@@ -22,7 +22,7 @@ export default {
      */
     addCourse(courseForm){
         return request ({
-            url: `/admin/serviceedu/course/add`,
+            url: `/admin/serviceEdu/course/add`,
             method: 'post',
             data: courseForm
         })
@@ -33,7 +33,7 @@ export default {
      */
     getAllTeacher(){
         return request({
-            url: `/admin/serviceedu/teacher/getAll`,
+            url: `/admin/serviceEdu/teacher/getAll`,
             method: 'get'
         })
     },
@@ -44,7 +44,7 @@ export default {
      */
     getCourseById(id){
         return request ({
-            url: `/admin/serviceedu/course/getCourseById/${id}`,
+            url: `/admin/serviceEdu/course/getCourseById/${id}`,
             method: 'get'
         })
     },
@@ -55,7 +55,7 @@ export default {
      */
     updateCourse(courseForm){
         return request ({
-            url: `/admin/serviceedu/course/updateCourse`,
+            url: `/admin/serviceEdu/course/updateCourse`,
             method: 'post',
             data: courseForm
         })
@@ -67,7 +67,7 @@ export default {
      */
     getCoursePublishInfoById(id) {
         return request({
-          url: `/admin/serviceedu/course/getCoursePublish/${id}`,
+          url: `/admin/serviceEdu/course/getCoursePublish/${id}`,
           method: 'get'
         })
       },
@@ -78,7 +78,7 @@ export default {
        */
       publishCourse(id) {
         return request({
-          url: `/admin/serviceedu/course/publish/${id}`,
+          url: `/admin/serviceEdu/course/publish/${id}`,
           method: 'get'
         })
       },
@@ -89,7 +89,7 @@ export default {
        */
       removeCourse(id) {
         return request({
-          url: `/admin/serviceedu/course/delete/${id}`,
+          url: `/admin/serviceEdu/course/delete/${id}`,
           method: 'delete'
         })
       },
