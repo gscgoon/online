@@ -5,7 +5,6 @@
             v-model="filterText"
             style="margin-button:30px;">
         </el-input>
-
         <el-tree
             ref="tree"
             :data="subjectData"

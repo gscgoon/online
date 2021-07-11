@@ -6,7 +6,7 @@ export default {
      */
     getTeacherCourseData(){
         return request ({
-            url: `/web/serviceedu/index/getTeacherAndCourse`,
+            url: `/web/serviceEdu/index/getTeacherAndCourse`,
             method: 'get'
         })
     }

@@ -9,9 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * 课程详情封装类
- */
-
-/**
  * @author Super
  * @date 2020-04-11 1:17
  */

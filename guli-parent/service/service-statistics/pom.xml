@@ -8,16 +8,13 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <name>统计模块</name>
     <artifactId>service-statistics</artifactId>
-
     <dependencies>
-
         <!-- nacos配置中心 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
     </dependencies>
-
 </project>

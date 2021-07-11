@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const api_name = '/admin/acl/role'
+const api_name = '/admin/Acl/role'
 
 export default {
 
@@ -18,7 +18,7 @@ export default {
       })
   },
   /**
-   * 
+   * 根据id获取角色信息
    * @param {*} id 
    */
   getById(id) {
@@ -83,6 +83,17 @@ export default {
       url: `${api_name}/batchRemoveRole`,
       method: 'delete',
       data:idList
+    })
+  },
+
+  /**
+   * 获取到所有角色
+   * @returns 
+   */
+  getAllRole(){
+    return request({
+      url: `${api_name}/getAllRole`,
+      method:'get'
     })
   }
       

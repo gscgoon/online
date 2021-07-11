@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const api_name = '/web/serviceedu/teacher'
+const api_name = '/web/serviceEdu/teacher'
 export default {
     /**
      * 讲师列表

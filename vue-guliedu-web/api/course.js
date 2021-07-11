@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const api_name = '/web/serviceedu/course'
+const api_name = '/web/serviceEdu/course'
 export default {
    /**
     * 获取课程列表
@@ -33,7 +33,7 @@ export default {
      */
     getVideoPlayAuth(id) {
         return request({
-            url: `/admin/servicevod/video/getPlayAuth/${id}`,
+            url: `/admin/serviceVod/video/getPlayAuth/${id}`,
             method: 'get'
         })
     },
@@ -43,7 +43,7 @@ export default {
      */
     getAllSubject(){
         return request({
-            url: `/admin/serviceedu/subject/getAll`,
+            url: `/admin/serviceEdu/subject/getAll`,
             method: 'get'
         })
     },
@@ -56,7 +56,7 @@ export default {
      */
     getComments(page,limit,courseId){
         return request({
-            url: `/web/servicecomment/edu-comment/getAllComments/${page}/${limit}/${courseId}`,
+            url: `/web/serviceComment/edu-comment/getAllComments/${page}/${limit}/${courseId}`,
             method: 'get'
         })
     },
@@ -67,7 +67,7 @@ export default {
      */
     saveComment(comment){
         return request({
-            url: `/web/servicecomment/edu-comment/addComment`,
+            url: `/web/serviceComment/edu-comment/addComment`,
             method: 'post',
             data: comment
         })

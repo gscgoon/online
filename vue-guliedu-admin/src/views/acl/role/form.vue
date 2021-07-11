@@ -25,7 +25,7 @@ export default {
       role: defaultForm,
       saveBtnDisabled: false, // 保存按钮是否禁用,
       validateRules: {
-        roleName: [{ required: true, trigger: 'blur', message: '角色名必须输入' }]
+        roleName: [{ required: true, trigger: 'change', message: '角色名必须输入' }]
       }
     }
   },
@@ -50,7 +50,7 @@ export default {
 
     // 表单初始化
     init() {
-      debugger
+      // debugger
       if (this.$route.params && this.$route.params.id) {
         const id = this.$route.params.id
         this.fetchDataById(id)
@@ -104,7 +104,7 @@ export default {
     // 根据id查询记录
     fetchDataById(id) {
       roleApi.getById(id).then(response => {
-        debugger
+        // debugger
         this.role = response.data.item
       })
     }

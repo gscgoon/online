@@ -8,10 +8,8 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <name>公共组件之_base</name>
     <artifactId>service-base</artifactId>
-
-
     <dependencies>
         <dependency>
             <groupId>com.atguigu</groupId>
@@ -19,6 +17,4 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-
 </project>

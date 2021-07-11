@@ -8,23 +8,19 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <name>订单支付模块</name>
     <artifactId>service-order</artifactId>
-
-
     <dependencies>
         <dependency>
             <groupId>com.github.wxpay</groupId>
             <artifactId>wxpay-sdk</artifactId>
             <version>0.0.3</version>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
     </dependencies>
-
     <!-- 项目打包时，将xml文件一起打包 -->
     <build>
         <resources>
@@ -37,5 +33,4 @@
             </resource>
         </resources>
     </build>
-
 </project>

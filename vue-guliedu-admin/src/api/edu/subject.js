@@ -7,7 +7,7 @@ export default {
    */
   getAllSubject(){
     return request({
-      url: `/admin/serviceedu/subject/getAll`,
+      url: `/admin/serviceEdu/subject/getAll`,
       method: 'get'
     })
   }

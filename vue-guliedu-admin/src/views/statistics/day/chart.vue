@@ -31,10 +31,12 @@
         type="primary"
         icon="el-icon-search"
         @click="showChart()"
-      >查询</el-button>
+        round
+        >查询</el-button
+      >
     </el-form>
     <div class="chart-container">
-      <div id="chart" class="chart" style="height:500px;width:100%" />
+      <div id="chart" class="chart" style="height: 500px; width: 100%" />
     </div>
   </div>
 </template>
@@ -46,14 +48,15 @@ export default {
   data() {
     return {
       searchObj: {
-        type: "",
-        begin: "",
-        end: ""
+        //给默认值防止报接口错误,Request failed with status code 404
+        type: "login_num",
+        begin: this.getDateStr(), //new Date()
+        end: this.getDateStr(), //new Date()
       },
       btnDisabled: false,
       chart: null,
       xData: [],
-      yData: []
+      yData: [],
     };
   },
   methods: {
@@ -65,11 +68,11 @@ export default {
       var option = {
         //显示标题
         title: {
-          text: this.title
+          text: this.title,
         },
         //x坐标轴触发提示
         tooltip: {
-          trigger: "axis"
+          trigger: "axis",
         },
         //区域缩放
         dataZoom: [
@@ -84,29 +87,29 @@ export default {
               "path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z",
             handleSize: "110%",
             handleStyle: {
-              color: "#d3dee5"
+              color: "#d3dee5",
             },
             textStyle: {
-              color: "#fff"
+              color: "#fff",
             },
-            borderColor: "#90979c"
+            borderColor: "#90979c",
           },
           {
             type: "inside",
             show: true,
             height: 15,
             start: 1,
-            end: 35
-          }
+            end: 35,
+          },
         ],
         // x轴是类目轴（离散数据）,必须通过data设置类目数据
         xAxis: {
           type: "category",
-          data: this.xData //数据绑定
+          data: this.xData, //数据绑定
         },
         // y轴是数据轴（连续数据）
         yAxis: {
-          type: "value"
+          type: "value",
         },
         // 系列列表。每个系列通过 type 决定自己的图表类型
         series: [
@@ -114,23 +117,23 @@ export default {
             // 系列中的数据内容数组
             data: this.yData, //数据绑定
             // 折线图
-            type: "line"
-          }
-        ]
+            type: "line",
+          },
+        ],
       };
       this.chart.setOption(option);
     },
     showChart() {
       // this.initChart()
       //获取后台返回的map数据
-      day.showChart(this.searchObj).then(response => {
-          console.log(response.data.yNumList)
-          console.log(response.data.xDateList)
+      // console.log(this.searchObj);
+      day.showChart(this.searchObj).then((response) => {
+        // console.log(response.data.yNumList);
+        // console.log(response.data.xDateList);
         //纵轴数据（个数）
         this.yData = response.data.yNumList;
         //横轴数据（天）
         this.xData = response.data.xDateList;
-
         //统计类别
         switch (this.searchObj.type) {
           case "login_num":
@@ -151,7 +154,18 @@ export default {
         }
         this.initChart();
       });
-    }
-  }
+    },
+    getDateStr() {
+      let date = new Date();
+      let y = date.getFullYear();
+      let m = date.getMonth() + 1;
+      m = m < 10 ? "0" + m : m;
+      let d = date.getDate();
+      d = d < 10 ? "0" + d : d;
+      const time = y + "-" + m + "-" + d;
+      // console.log(time);
+      return time;
+    },
+  },
 };
 </script>

@@ -8,7 +8,7 @@ export default {
      */
     toLogin(loginVo){
         return request({
-            url: `/admin/serviceucenter/ucenter-member/login`,
+            url: `/admin/serviceUserCenter/user-center-member/login`,
             method: 'post',
             data: loginVo
         })
@@ -19,7 +19,7 @@ export default {
      */
     getLoginInfoByToken(){
         return request({
-            url: `/web/serviceucenter/member/auth/getLoginInfo`,
+            url: `/web/serviceUserCenter/member/auth/getLoginInfo`,
             method: 'get'
         })
     }

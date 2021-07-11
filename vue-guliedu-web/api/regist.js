@@ -8,7 +8,7 @@ export default {
      */
     registMember(registerVo){
         return request({
-            url: `/admin/serviceucenter/ucenter-member/regist`,
+            url: `/admin/serviceUserCenter/user-center-member/regist`,
             method: 'post',
             data: registerVo
         })
@@ -20,7 +20,7 @@ export default {
      */
     sendCodeToMobile(mobile){
         return request({
-            url: `/admin/servicemsm/msm/getPhone/${mobile}`,
+            url: `/admin/serviceMsm/msm/getPhone/${mobile}`,
             method: 'get'
         })
     }

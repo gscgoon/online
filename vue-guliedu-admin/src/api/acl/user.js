@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const api_name = '/admin/acl/user'
+const api_name = '/admin/Acl/user'
 
 export default {
 

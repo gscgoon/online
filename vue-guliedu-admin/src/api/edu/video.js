@@ -7,7 +7,7 @@ export default {
    */
   getChapterVideo(courseId) {
     return request({
-      url: `/admin/serviceedu/chapter/getAll/${courseId}`,
+      url: `/admin/serviceEdu/chapter/getAll/${courseId}`,
       method: 'get'
     })
   },
@@ -18,7 +18,7 @@ export default {
    */
   addVideo(video) {
     return request({
-      url: `/admin/serviceedu/video/add`,
+      url: `/admin/serviceEdu/video/add`,
       method: 'post',
       data: video
     })
@@ -30,7 +30,7 @@ export default {
    */
   deleteVideo(id) {
     return request({
-      url: `/admin/serviceedu/video/delete/${id}`,
+      url: `/admin/serviceEdu/video/delete/${id}`,
       method: 'delete'
     })
   },
@@ -41,7 +41,7 @@ export default {
    */
   getVideo(id) {
     return request({
-      url: `/admin/serviceedu/video/getVideoById/${id}`,
+      url: `/admin/serviceEdu/video/getVideoById/${id}`,
       method: 'get'
     })
   },
@@ -52,7 +52,7 @@ export default {
    */
   updateVideo(video) {
     return request({
-      url: `/admin/serviceedu/video/update`,
+      url: `/admin/serviceEdu/video/update`,
       method: 'post',
       data: video
     })

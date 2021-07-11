@@ -2,7 +2,8 @@
     <div class="app-container">
         <el-form label-width="120px">
             <el-form-item label="信息描述">
-        <el-tag type="info">excel模版说明</el-tag><!--用于标记和选择-->
+        <el-tag type="info">excel模版说明</el-tag>
+        <!-- <el-tag type="info">第一版</el-tag>用于标记和选择 -->
         <el-tag>
           <i class="el-icon-download"/><!-- 图标 -->
           <a :href="OSS_PATH + '/excel/%E8%AF%BE%E7%A8%8B%E5%88%86%E7%B1%BB.xls'">点击下载模版</a>

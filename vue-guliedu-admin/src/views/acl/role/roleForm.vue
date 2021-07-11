@@ -14,7 +14,6 @@
 </template>
 <script>
 import menu from '@/api/acl/menu'
-
 export default {
   data() {
     return {
@@ -37,12 +36,10 @@ export default {
       this.init()
     }
   },
-
   created () {
     this.init()
   },
   methods: {
-
     init(){
       if (this.$route.params && this.$route.params.id) {
           this.roleId = this.$route.params.id
@@ -53,7 +50,7 @@ export default {
         menu.toAssign(roleId).then(response => {
             this.data = response.data.children
             var jsonList = JSON.parse(JSON.stringify(this.data))
-            debugger;
+            // debugger;
             var list = []
             this.getJsonToList(list, jsonList[0]['children'])
             console.log("最终集合")
@@ -81,17 +78,15 @@ export default {
     getCheckedKeys() {
       console.log(this.$refs.tree.getCheckedKeys());
     },
-
     setCheckedKeys(list) {
       this.$refs.tree.setCheckedKeys(list);
     },
-
-    save(){
+      save(){
       this.saveBtnDisabled = true
-      var ids = this.$refs.tree.getCheckedKeys().join(",");
       //vue elementUI tree树形控件获取父节点ID的实例
-      //node_modules\element-ui\lib\element-ui.common.js
-      //25348行修改源码
+    //   //node_modules\element-ui\lib\element-ui.common.js
+    //   //25348行修改源码
+      var ids = this.$refs.tree.getCheckedKeys().concat(this.$refs.tree.getHalfCheckedKeys()).join(",");
       menu.doAssign(this.roleId, ids).then(response => {
           if(response.success){
               this.$message({

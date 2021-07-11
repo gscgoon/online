@@ -1,6 +1,15 @@
 <template>
   <div class="app-container">
     <el-input v-model="filterText" placeholder="Filter keyword" style="margin-bottom:30px;"/>
+<!-- <el-tree
+            ref="tree"
+            :data="subjectData"
+            :props="defaultProps"
+            :filter-node-method="filterNode"
+            class="filter-tree"
+            default-expand-all
+            >
+        </el-tree> -->
 
 
     <el-table
@@ -148,20 +157,20 @@ export default {
       menu: menuForm,
       permission: perForm,
       menuValidateRules: {
-        name: [{required: true, trigger: 'blur', message: '菜单名必须输入'}],
-        path: [{required: true, trigger: 'blur', message: '菜单路径必须输入'}],
-        component: [{required: true, trigger: 'blur', message: '组件名称必须输入'}]
+        name: [{required: true, trigger: 'change', message: '菜单名必须输入'}],
+        path: [{required: true, trigger: 'change', message: '菜单路径必须输入'}],
+        component: [{required: true, trigger: 'change', message: '组件名称必须输入'}]
       },
       permissionValidateRules: {
-        name: [{required: true, trigger: 'blur', message: '功能名称必须输入'}],
-        permissionValue: [{required: true, trigger: 'blur', message: '功能权限值必须输入'}]
+        name: [{required: true, trigger: 'change', message: '功能名称必须输入'}],
+        permissionValue: [{required: true, trigger: 'change', message: '功能权限值必须输入'}]
       }
     }
   },
   // 监听上面文本框搜索
   watch: {
     filterText(val) {
-      this.$refs.menuTree.filter(val)
+      this.$refs.menuList.filter(val)
     }
   },
 
@@ -184,7 +193,6 @@ export default {
     },
     remove(data) {
       console.log(data)
-
       this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
